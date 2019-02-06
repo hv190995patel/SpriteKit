@@ -10,21 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
-    /*
-     What are things you can draw on a canvas?
-     - drawRect
-     - drawCirc
-     - canvas.drawText("HELLO WORLD", 100, 50, paintbrush)
-     - drawBitmaps
-     - drawLine
-     
-     - setColor
-     - setTextSize
-     - setStyle (FILL, STROKE)
-    */
-    
-    
+
     // Example 1  - Adding text to the screen
     let label = SKLabelNode(text:"HELLO WORLD!")
     let label2 = SKLabelNode(text:"ABCD")
@@ -35,8 +21,14 @@ class GameScene: SKScene {
     // Example 3 - Draw an image on the screen
     let duck = SKSpriteNode(imageNamed: "psyduck")
     
+    // Example 4 - Draw a circle on the screen
+    let circle = SKShapeNode(circleOfRadius: 40)
+    
     override func didMove(to view: SKView) {
+        // output the size of the screen
+        print("Screen size (w,h): \(size.width),\(size.height)")
         
+        // Add images to the scene
         let bug = SKSpriteNode(imageNamed: "caterpie")
         bug.position = CGPoint(x:size.width/2, y:size.height/2)
         addChild(bug)
@@ -44,10 +36,6 @@ class GameScene: SKScene {
         duck.position = CGPoint(x:size.width/2+100, y:size.height/2)
         addChild(duck)
         
-        
-        
-        // output the size of the screen
-        print("Screen size (w,h): \(size.width),\(size.height)")
         
         // configure your text
         label.position = CGPoint(x:size.width/2, y:size.height/2)
@@ -61,11 +49,23 @@ class GameScene: SKScene {
         addChild(label)
         addChild(label2)
         
-        
         // configure the square
         square.position = CGPoint(x: 105, y:700);
         // add square to scene
         addChild(square)
+        
+        // configure your circle
+        // -----------------------
+        // color of border
+        circle.strokeColor = SKColor.yellow
+        // width of border
+        circle.lineWidth = 5
+        // fill color
+        circle.fillColor = SKColor.magenta
+        // location of circle
+        circle.position = CGPoint(x:200, y:100)
+        addChild(circle)
+        
     }
     
 }
