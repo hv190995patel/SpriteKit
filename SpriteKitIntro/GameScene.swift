@@ -29,8 +29,11 @@ class GameScene: SKScene {
     let label = SKLabelNode(text:"HELLO WORLD!")
     
     override func didMove(to view: SKView) {
+        // output the size of the screen
+        print("Screen size (w,h): \(size.width),\(size.height)")
+        
         // configure your text
-        label.position = CGPoint(x:200,y:250);
+        label.position = CGPoint(x:size.width/2, y:size.height/2);
         label.fontSize = 45
         label.fontColor = SKColor.yellow
         
