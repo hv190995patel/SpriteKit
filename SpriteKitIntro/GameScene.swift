@@ -29,6 +29,9 @@ class GameScene: SKScene {
     let label = SKLabelNode(text:"HELLO WORLD!")
     let label2 = SKLabelNode(text:"ABCD")
     
+    // Example 2 - Draw a square on the screen
+    let square = SKSpriteNode(color: SKColor.blue, size: CGSize(width: 50, height: 50))
+    
     override func didMove(to view: SKView) {
         // output the size of the screen
         print("Screen size (w,h): \(size.width),\(size.height)")
@@ -44,6 +47,12 @@ class GameScene: SKScene {
         // add it to your scene (draw it!)
         addChild(label)
         addChild(label2)
+        
+        
+        // configure the square
+        square.position = CGPoint(x: 105, y:700);
+        // add square to scene
+        addChild(square)
     }
     
 }
