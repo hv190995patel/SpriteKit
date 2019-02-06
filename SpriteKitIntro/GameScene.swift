@@ -32,12 +32,25 @@ class GameScene: SKScene {
     // Example 2 - Draw a square on the screen
     let square = SKSpriteNode(color: SKColor.blue, size: CGSize(width: 50, height: 50))
     
+    // Example 3 - Draw an image on the screen
+    let duck = SKSpriteNode(imageNamed: "psyduck")
+    
     override func didMove(to view: SKView) {
+        
+        let bug = SKSpriteNode(imageNamed: "caterpie")
+        bug.position = CGPoint(x:size.width/2, y:size.height/2)
+        addChild(bug)
+        
+        duck.position = CGPoint(x:size.width/2+100, y:size.height/2)
+        addChild(duck)
+        
+        
+        
         // output the size of the screen
         print("Screen size (w,h): \(size.width),\(size.height)")
         
         // configure your text
-        label.position = CGPoint(x:size.width/2, y:size.height/2);
+        label.position = CGPoint(x:size.width/2, y:size.height/2)
         label.fontSize = 45
         label.fontColor = SKColor.yellow
 
