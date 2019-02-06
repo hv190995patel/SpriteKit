@@ -27,6 +27,7 @@ class GameScene: SKScene {
     
     // Example 1  - Adding text to the screen
     let label = SKLabelNode(text:"HELLO WORLD!")
+    let label2 = SKLabelNode(text:"ABCD")
     
     override func didMove(to view: SKView) {
         // output the size of the screen
@@ -36,10 +37,13 @@ class GameScene: SKScene {
         label.position = CGPoint(x:size.width/2, y:size.height/2);
         label.fontSize = 45
         label.fontColor = SKColor.yellow
+
+        label2.fontSize = 60
+        label2.position = CGPoint(x:size.width/2, y:200)
         
         // add it to your scene (draw it!)
         addChild(label)
-        
+        addChild(label2)
     }
     
 }
