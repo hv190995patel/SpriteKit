@@ -24,6 +24,29 @@ class GameScene: SKScene {
     // Example 4 - Draw a circle on the screen
     let circle = SKShapeNode(circleOfRadius: 50)
     
+    override func update(_ currentTime: TimeInterval) {
+//        print("TIME \(currentTime) ")
+    }
+    
+    //Function TO DETECT if screen is touched
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self) // self is the current SKScene
+            let node = atPoint(location)
+            
+            // To get the touched half of the screen I do this
+            if (location.x < self.size.width/2) {
+                // left half touched, do something
+                print("touched left")
+            }
+            
+            if location.x >= self.size.width/2 {
+                // right half touched, do something
+                print("touched right")
+            }
+        }
+    }
+        
     override func didMove(to view: SKView) {
         // output the size of the screen
         print("Screen size (w,h): \(size.width),\(size.height)")
@@ -63,7 +86,7 @@ class GameScene: SKScene {
         // fill color
         circle.fillColor = SKColor.white
         // location of circle
-        circle.position = CGPoint(x:0, y:self.size.height/2)
+        circle.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
         addChild(circle)
         
         //Movement  ->SKACTION
@@ -73,16 +96,35 @@ class GameScene: SKScene {
         
         
         //1. MOVEMENT  (UP DOWN CIRCLE)
-        let moveAction = SKAction.moveBy(x: 100, y: 0, duration: 15)
+        let moveAction = SKAction.moveBy(x: 100, y: 0, duration: 5)
         
         let moveAction2 = SKAction.moveTo(x: 300, duration: 8)
         
         let newPosition = CGPoint(x:255,y:700)
-        
+
         let moveAction3 = SKAction.move(to: newPosition, duration: 5)
         
+        let moveAction4 = SKAction.moveBy(x: 50, y: 300, duration: 5)
+        
+        let sequence = SKAction.sequence([moveAction,moveAction2, moveAction4])
+        
+        let sqaurePosition2 = CGPoint(x:self.size.width/2, y:self.size.height/2)
+        let moveToCircleAction = SKAction.move(to: sqaurePosition2, duration: 5)
+        square.run(moveToCircleAction)
+        
         //2. APPLY THE MOVEMENT TO CHARACTER
-        circle.run(moveAction3)
+        
+        //circle.run(moveAction)
+        //circle.run(moveAction4)
+       // circle.run(sequence)
+        //duck.run(moveAction4)
+        
+        
+        
+        //check if circl touches the sqaure
+        if(circle.frame.intersects(square.frame)) {
+            print("COLLISION IS DETECTED")
+        }
     }
     
 }
