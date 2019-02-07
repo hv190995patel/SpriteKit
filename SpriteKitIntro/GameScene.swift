@@ -12,8 +12,8 @@ import GameplayKit
 class GameScene: SKScene {
 
     // Example 1  - Adding text to the screen
-    let label = SKLabelNode(text:"GOOD MORNING!")
-    let label2 = SKLabelNode(text:"HARSH")
+    let label = SKLabelNode(text:"HELLO SWIFT!")
+    let label2 = SKLabelNode(text:"IOS")
     
     // Example 2 - Draw a square on the screen
     let square = SKSpriteNode(color: SKColor.blue, size: CGSize(width: 50, height: 50))
