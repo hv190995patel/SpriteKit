@@ -22,7 +22,7 @@ class GameScene: SKScene {
     let duck = SKSpriteNode(imageNamed: "psyduck")
     
     // Example 4 - Draw a circle on the screen
-    let circle = SKShapeNode(circleOfRadius: 40)
+    let circle = SKShapeNode(circleOfRadius: 50)
     
     override func didMove(to view: SKView) {
         // output the size of the screen
@@ -57,15 +57,32 @@ class GameScene: SKScene {
         // configure your circle
         // -----------------------
         // color of border
-        circle.strokeColor = SKColor.yellow
+        circle.strokeColor = SKColor.blue
         // width of border
         circle.lineWidth = 5
         // fill color
-        circle.fillColor = SKColor.magenta
+        circle.fillColor = SKColor.white
         // location of circle
-        circle.position = CGPoint(x:200, y:100)
+        circle.position = CGPoint(x:0, y:self.size.height/2)
         addChild(circle)
         
+        //Movement  ->SKACTION
+        //1. SINGLE MOVEMENT
+        //2. SEQUENCE OF MOVEMENTS
+        
+        
+        
+        //1. MOVEMENT  (UP DOWN CIRCLE)
+        let moveAction = SKAction.moveBy(x: 100, y: 0, duration: 15)
+        
+        let moveAction2 = SKAction.moveTo(x: 300, duration: 8)
+        
+        let newPosition = CGPoint(x:255,y:700)
+        
+        let moveAction3 = SKAction.move(to: newPosition, duration: 5)
+        
+        //2. APPLY THE MOVEMENT TO CHARACTER
+        circle.run(moveAction3)
     }
     
 }
